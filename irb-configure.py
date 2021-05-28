@@ -62,5 +62,7 @@ print("Changes have been made")
 #Closing the connection to the device
 dev.close()
 
+
+
 print("Logged out")
                  #todo hide
