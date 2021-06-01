@@ -3,7 +3,7 @@ import collections
 
 MovieResult = collections.namedtuple(
     'MovieResult',
-    "imdb_code, title, duration, director, year, rating, imdb_score, keywords, genres")
+    "imdb_code3, title, duration, director, year, rating, imdb_score, keywords, genres")
 
 
 search = input("Which movie are you looking to watch today?\n")
@@ -15,14 +15,16 @@ resp.raise_for_status()
 
 movie_data = resp.json()
 #print(type(movie_data), movie_data)
+#print(len(movie_data))
 movies_list = movie_data.get('hits')
-#print(movies_list)
+#print(type(movies_list), movies_list)
+#print(len(movies_list))
 #print(resp.status_code)
 #print(type(resp.text))
 movies = []
 
 for md in movies_list:
-    m = MovieResult(imdb_code = md.get('imdb_code'),
+    m = MovieResult(imdb_code3 = md.get('imdb_code'),
                     title = md.get('title'),
                     director= md.get('director'),
                     duration = md.get('duration'),
@@ -34,6 +36,7 @@ for md in movies_list:
 
     movies.append(m)
 
+print(movies)
 for m in movies:
     print("{}-----{}".format(m.year, m.title))
 
